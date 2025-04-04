@@ -1,0 +1,2009 @@
+- acquirer_account:
+    fields:
+      - field1:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - latin
+      - field2:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - latin
+      - field3:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - latin
+
+- affiliate_merchant_bank_info:
+    fields:
+      - ben_acc:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1000000000000000
+              max: 9999999999999999
+      - ben_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+
+- aud_collector:
+    fields:
+      - email:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+
+- aud_personal_data:
+    processors:
+      - com.mm.anonymisation.service.processor.FullNameRowPostProcessor
+      - com.mm.anonymisation.service.processor.PassportIinRowPostProcessor
+      - com.mm.anonymisation.service.processor.PassportExpirationRowPostProcessor
+    fields:
+      - birthday:
+          generator:
+            name: com.mm.anonymisation.service.generator.DateFieldGenerator
+            params:
+              min: '1980-01-01'
+              max: '2000-12-31'
+      - first_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - last_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - patronymic:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - full_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - passport_iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - passport_data:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              charSet:
+                - numeric
+              min: 9
+              max: 9
+      - passport_expiration_date:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '2000-01-01'
+      - passport_date:
+          generator:
+            name: com.mm.anonymisation.service.generator.DateShiftFieldGenerator
+            params:
+              min: -1000
+              max: -100
+      - sex:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              max: 2
+
+- aud_address:
+    fields:
+      - city:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 20
+              charSet:
+                - russian
+      - street:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 20
+              charSet:
+                - russian
+      - home:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 1
+              max: 5
+              charSet:
+                - numeric
+      - flat:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 1
+              max: 5
+              charSet:
+                - numeric
+      - phoneNumber:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- aud_user_account:
+    fields:
+      - email:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+      - login:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+      - name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- aud_work:
+    fields:
+      - EMPLOYER:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - tel_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- aud_yandex_eva_account:
+    fields:
+      - first_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - last_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+
+- aud_yandex_eva_avatar:
+    fields:
+      - image:
+          base64: true
+
+- address:
+    fields:
+      - city:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 20
+              charSet:
+                - russian
+      - street:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 20
+              charSet:
+                - russian
+      - home:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 1
+              max: 5
+              charSet:
+                - numeric
+      - flat:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 1
+              max: 5
+              charSet:
+                - numeric
+      - phoneNumber:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- auto_dialer_call:
+    fields:
+      - status_data:
+          base64: true
+      - number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - pool_phone_value:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- auto_informer_phone:
+    fields:
+      - phone_value:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- bank_account:
+    fields:
+      - ben_acc:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1000000000000000
+              max: 9999999999999999
+      - ben_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+      - creditcard_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1000000000000000
+              max: 9999999999999999
+
+- beeline_scoring:
+    fields:
+      - phone:
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - message:
+          base64: true
+
+- bch_phone:
+    fields:
+      - value:
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- borrower_file_content:
+    exclude: true
+
+- borrower_registration:
+    processors:
+      - com.mm.anonymisation.service.processor.BorrowerRegistrationIinRowPostProcessor
+      - com.mm.anonymisation.service.processor.PassportExpirationRowPostProcessor
+    fields:
+      - mobile_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - actual_flat:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              max: 500
+      - actual_house:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              max: 500
+      - actual_street:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - birthday:
+          generator:
+            name: com.mm.anonymisation.service.generator.DateFieldGenerator
+            params:
+              min: '1980-01-01'
+              max: '2000-12-31'
+      - email:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+      - employer:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - first_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - home_number:
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - last_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - passport_authority:
+          generator:
+            name: com.mm.anonymisation.service.generator.EnumFieldGenerator
+            params:
+              values:
+                - JUSTICE
+                - MVD
+      - passport_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+      - passport_series:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+      - passport_date:
+          generator:
+            name: com.mm.anonymisation.service.generator.DateShiftFieldGenerator
+            params:
+              min: -1000
+              max: -100
+      - patronymic:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - payments_amount:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000
+              max: 50000
+      - registration_flat:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1
+              max: 500
+      - registration_house:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1
+              max: 500
+      - registration_street:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - sex:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              max: 2
+      - work_number:
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - passport_expiration_date:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '2000-01-01'
+
+- borrower_verified_phone:
+    fields:
+      - number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- borrower_verify_comment:
+    fields:
+      - phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - comment:
+          base64: true
+
+- bureau_credit_history_data:
+    fields:
+      - request:
+          base64: true
+
+- borrower_verified_data:
+    fields:
+      - home_number:
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - work_number:
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - work_comment:
+          base64: true
+      - home_comment:
+          base64: true
+      - mobile_comment:
+          base64: true
+
+- ch_mm_summary:
+    fields:
+      - mm_mobile:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- collector:
+    fields:
+      - email:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+
+- cp_borrower:
+    processors:
+      - com.mm.anonymisation.service.processor.FullNameRowPostProcessor
+      - com.mm.anonymisation.service.processor.PassportIinRowPostProcessor
+    fields:
+      - bureau_home_phones:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - bureau_mobile_phones:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - bureau_work_phones:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - door_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1
+              max: 99
+      - email:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+      - employer:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 10
+              max: 15
+              charSet:
+                - latin
+      - first_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - full_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - full_name_lat:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - home_phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - house_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1
+              max: 99
+      - last_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - mobile_phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - other_income:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000
+              max: 100000
+      - passport_document_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              charSet:
+                - numeric
+              min: 9
+              max: 9
+      - passport_iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - patronymic:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - real_addr_door_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1
+              max: 99
+      - real_addr_home_phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - real_addr_house_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1
+              max: 99
+      - real_addr_street:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - salary:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000
+              max: 100000
+      - sex:
+          generator:
+            name: com.mm.anonymisation.service.generator.EnumFieldGenerator
+            params:
+              values:
+                - MAN
+                - WOMAN
+      - street:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - utm_content:
+          base64: true
+      - work_phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- cp_ch_mms_ummary:
+    fields:
+      - mm_mobile:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - mm_iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.RandomIinFieldGenerator
+            params:
+              min: '1980-01-01'
+              max: '2000-12-31'
+
+- cp_fcb_bml:
+    fields:
+      - last_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - middle_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - first_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.RandomIinFieldGenerator
+            params:
+              min: '1980-01-01'
+              max: '2000-12-31'
+
+- cp_fcb_kdn:
+    fields:
+      - income:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000
+              max: 100000
+
+- cp_top_up_fcb_bml:
+    fields:
+      - first_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - last_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - middle_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- credit_calculations_fin_context:
+    fields:
+      - fin_context:
+          base64: true
+
+- credit_payment_log:
+    fields:
+      - user_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+
+- collector_action_contact:
+    fields:
+      - value:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- collector_credit:
+    fields:
+      - system_notes:
+          base64: true
+
+- cp_external_data:
+    fields:
+      - data:
+          base64: true
+
+- cp_risk_settings:
+    fields:
+      - settings:
+          base64: true
+
+- credit:
+    fields:
+      - system_notes:
+          base64: true
+
+- credit_restructing_offer:
+    fields:
+      - html:
+          base64: true
+
+- credit_registration:
+    fields:
+      - email:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - mobile_number:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- credit_rollover:
+    fields:
+      - system_notes:
+          base64: true
+
+- credit_rollover_offer:
+    fields:
+      - html:
+          base64: true
+
+- cp_fcb_additional_sources:
+    fields:
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- cp_info_sphere_numbuster:
+    fields:
+      - name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - buster_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+
+- cp_landau_key_clients:
+    fields:
+      - client_names:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+
+- datalab_action:
+    fields:
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- e_commerce_partner_account:
+    fields:
+      - login:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 36
+      - password:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 36
+
+- external_systems_integration_data:
+    exclude: true
+
+- email_check:
+    fields:
+      - email:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+
+
+- esign_docs:
+    fields:
+      - doc_nametxt:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 30
+
+- esign_docs_signature:
+    fields:
+      - signed_fio:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - signed_firm:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+- fcb:
+    fields:
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- fcb_gcvp:
+    fields:
+      - average_amount_opv:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000
+              max: 100000
+      - request_iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- fcb_additional_sources:
+    fields:
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- fcb_asp:
+    fields:
+      - birth_date:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '1970-01-01'
+      - firstname:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - secondname:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - surname:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - sex:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: ''
+
+- fcb_contracts_info:
+    fields:
+      - attribute_name_ru:
+          base64: true
+      - attribute_value:
+          base64: true
+
+- fcb_credit_app_report:
+    fields:
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - bankName:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 10
+      - bin:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 10
+      - companyName:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 10
+      - creditLocationText:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 10
+      - creditPusposeText:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 10
+      - currencyApplication:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 10
+      - fatherName:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 10
+      - firstName:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 10
+      - lastName:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              max: 10
+
+- fcb_dti:
+    fileds:
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- fcb_gcvp_deduction_esp:
+    fields:
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- fcb_gcvp_social_pension:
+    fields:
+      - request_iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- fcb_kdn:
+    fields:
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - first_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - last_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - middle_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- fcb_monitoring_trigger:
+    fields:
+      - name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+
+- file_content:
+    exclude: true
+
+- file_info:
+    exclude: true
+
+- gbd_verify_phone:
+    fields:
+      - phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- info_sphere_records:
+    fields:
+      - field_value:
+          base64: true
+
+- info_sphere_report:
+    fields:
+      - request_phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- iin_skip_validation:
+    exclude: true
+
+- kaspi_invoice_collections:
+    fields:
+      - user_phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - order_id:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000000
+              max: 90000000
+
+- kisc_credit:
+    fields:
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- landau_report:
+    fields:
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- llp_beneficial_owner:
+    fields:
+      - first_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - last_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - patronymic:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+
+- llp_contacts:
+    fields:
+      - value:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+
+- llp_user_account:
+    fields:
+      - email:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+      - login:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+      - password:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+      - phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- leak_detection_log:
+    fields:
+      - digest_text:
+          base64: true
+
+- mail_sessions:
+    fields:
+      - last_exception:
+          base64: true
+
+- mandrill_emails:
+    fields:
+      - email:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+
+- national_statistics:
+    fields:
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- notification_sms:
+    fields:
+      - mobile_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- partner:
+    fields:
+      - email:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+
+- partner_callback:
+    fields:
+      - url:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: 'http://kz-solva-infra-wiremock.service.consul:28081/api/v1.1/pre-approval'
+
+- partner_callback_authorization:
+    fields:
+      - credential:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- partner_info_transfer:
+    fields:
+      - iban:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 20
+              max: 21
+              charSet:
+                - latin
+                - numeric
+      - payment_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 10
+              max: 20
+      - organization_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 10
+              max: 20
+
+- payment:
+    fields:
+      - resultData:
+          base64: true
+
+- payment_order:
+    fields:
+      - name_recipient:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+
+- payment_order_statements:
+    fields:
+      - payment_purpose:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+
+- payment_received_statements:
+    fields:
+      - description:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+      - details:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+
+- personal_data:
+    processors:
+      - com.mm.anonymisation.service.processor.FullNameRowPostProcessor
+      - com.mm.anonymisation.service.processor.PassportIinRowPostProcessor
+      - com.mm.anonymisation.service.processor.PassportExpirationRowPostProcessor
+    fields:
+      - birthday:
+          generator:
+            name: com.mm.anonymisation.service.generator.DateFieldGenerator
+            params:
+              min: '1980-01-01'
+              max: '2000-12-31'
+      - first_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - last_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - patronymic:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - full_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - passport_iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - passport_expiration_date:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '2000-01-01'
+      - passport_date:
+          generator:
+            name: com.mm.anonymisation.service.generator.DateShiftFieldGenerator
+            params:
+              min: -1000
+              max: -100
+      - sex:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              max: 2
+      - passport_data:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              charSet:
+                - numeric
+              min: 9
+              max: 9
+      - car_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+
+- preliminary_credit:
+    fields:
+      - system_notes:
+          base64: true
+
+- qiwi_scoring_info:
+    fields:
+      - phoneNumber:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- rbk_arrest:
+    fields:
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.RandomIinFieldGenerator
+            params:
+              min: '1980-01-01'
+              max: '2000-12-31'
+
+- rbk_bonus_calculations:
+    fields:
+      - credit_id:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000000
+              max: 90000000
+
+- rbk_card_info:
+    fields:
+      - cardholder_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+
+- rbk_card_transaction_history:
+    fields:
+      - credit_id:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000000
+              max: 90000000
+      - description:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+      - rbs_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000000
+              max: 90000000
+
+- rbk_fee_debtors:
+    fields:
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- rbk_monthly_loan_repayment:
+    fields:
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- rbk_notification_list:
+    fields:
+      - description:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+      - phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- rbk_offer_files:
+    fields:
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- rbk_transfers_history:
+    fields:
+      - beneficiary_fio:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+
+- rbk_user_account:
+    fields:
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - rbk_user_name:
+          base64: true
+      - rbk_password:
+          base64: true
+      - acccess_token:
+          base64: true
+      - refresh_token:
+          base64: true
+      - error_reason:
+          base64: true
+
+- registration_data_individual_entrepreneur:
+    fields:
+      - last_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - first_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - patronymic:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - email:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+      - passport_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+
+- report_test_query:
+    exclude: true
+
+- refinancing_param:
+    fields:
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+      - iban:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 20
+              max: 21
+              charSet:
+                - latin
+                - numeric
+      - beneficiary_bank_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - beneficiary_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - dest_descr:
+          generator:
+            name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+            params:
+              value: '-'
+
+- referral_code:
+    fields:
+      - code:
+          crypt: true
+          name: com.mm.anonymisation.service.generator.StringFieldGenerator
+          params:
+            min: 40
+            max: 50
+            charSet:
+              - latin
+
+- risk_intelligence:
+    fields:
+      - full_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              max: 15
+
+- ses_emails:
+    fields:
+      - email:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              max: 15
+
+- scoring_params:
+    fields:
+      - credit_system_notes:
+          base64: true
+      - actual_address_flat:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1
+              max: 100
+      - actual_address_home:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1
+              max: 100
+      - actual_address_phoneNumber:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - actual_address_street:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - real_address_flat:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1
+              max: 100
+      - real_address_home:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1
+              max: 100
+      - real_address_phoneNumber:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - real_address_street:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 20
+              charSet:
+                - russian
+
+- status_causes_description:
+    fields:
+      - note:
+          base64: true
+
+- sociohub_agregation_data:
+    fields:
+      - all_cell_phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - all_email:
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              min: 30
+              max: 35
+      - all_work_phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - main_cell_phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - main_work_phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - main_main_url_on_page:
+          generator:
+            name: com.mm.anonymisation.service.generator.UrlFieldGenerator
+
+- sociohub_v2_net:
+    fields:
+      - user_profile_id:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000000
+              max: 99999999
+
+- system_source_bank_account:
+    fields:
+      - ben_acc:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 1000000000000000
+              max: 9999999999999999
+      - ben_name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+
+- terrorist:
+    fields:
+      - full_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              max: 15
+      - iin:
+          generator:
+            name: com.mm.anonymisation.service.generator.RandomIinFieldGenerator
+            params:
+              min: '1980-01-01'
+              max: '2000-12-31'
+
+- tmp_landay_company_info:
+    exclude: true
+
+- tmp_scoring:
+    fields:
+      - Credit_system_notes:
+          base64: true
+
+- ucb_credit_history_data:
+    fields:
+      - request:
+          base64: true
+
+- url_token_account:
+    fields:
+      - user_login_token_id:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000000
+              max: 90000000
+      - url_mapping_id:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              min: 10000000
+              max: 90000000
+      - url:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.UrlFieldGenerator
+
+- user_account:
+    fields:
+      - email:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              min: 30
+              max: 35
+      - login:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.EmailFieldGenerator
+            params:
+              min: 30
+              max: 35
+      - name:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- user_account_individual_entrepreneur:
+    fields:
+      - phone:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+      - iin:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.RandomIinFieldGenerator
+            params:
+              min: '1980-01-01'
+              max: '2000-12-31'
+
+- user_audit_log:
+    fields:
+      - info:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - latin
+
+- user_login_device:
+    fields:
+      - pin_code:
+          name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+          params:
+            value: 'rpLau+DkPIiaz679qieepw=='
+      - public_key:
+          name: com.mm.anonymisation.service.generator.SkipValueFieldGenerator
+          params:
+            value: '-'
+
+- work:
+    fields:
+      - EMPLOYER:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian
+      - tel_number:
+          crypt: true
+          generator:
+            name: com.mm.anonymisation.service.generator.PhoneFieldGenerator
+
+- yandex_eva_avatar:
+    fields:
+      - image:
+          base64: true
+
+- yurta_payment:
+    fields:
+      - name_sender:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 10
+              charSet:
+                - russian

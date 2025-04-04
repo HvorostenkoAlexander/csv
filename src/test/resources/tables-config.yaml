@@ -1,0 +1,64 @@
+- integration_data:
+    exclude: true
+- borrower:
+    fields:
+      - secret_key:
+          generator:
+            name: com.mm.anonymisation.service.generator.StringFieldGenerator
+            params:
+              min: 10
+      - profile_last_updated_date:
+          generator:
+            name: com.mm.anonymisation.service.generator.BooleanFieldGenerator
+- personal_data:
+    processors:
+      - com.mm.anonymisation.service.processor.FullNameRowPostProcessor
+      - com.mm.anonymisation.service.processor.PassportIinRowPostProcessor
+    fields:
+      - first_name:
+          generator:
+            name: com.mm.anonymisation.service.generator.NameFieldGenerator
+            params:
+              min: 5
+              max: 64
+      - sex:
+          generator:
+            name: com.mm.anonymisation.service.generator.NumberFieldGenerator
+            params:
+              max: 1
+      - passport_data:
+          crypt: true
+- borrower_tracking:
+    fields:
+      - calculator_type:
+          generator:
+            name: com.mm.anonymisation.service.generator.EnumFieldGenerator
+            params:
+              values:
+                - STEP_8
+                - STEP_NEW_CALC
+- credit:
+    fields:
+      - sent_amount:
+          generator:
+            name: com.mm.anonymisation.service.generator.DecimalFieldGenerator
+            params:
+              precision: 10
+              scale: 2
+      - date_repaid:
+          generator:
+            name: com.mm.anonymisation.service.generator.DateFieldGenerator
+            params:
+              min: '2020-01-01'
+              max: '2024-01-01'
+      - date_requested:
+          generator:
+            name: com.mm.anonymisation.service.generator.DateTimeFieldGenerator
+            params:
+              min: '2020-01-01T00:00:00'
+              max: '2024-01-01T23:59:59'
+
+- credit_calculations_fin_context:
+    fields:
+      - fin_context:
+          base64: true

@@ -1,0 +1,61 @@
+plugins {
+  alias(libs.plugins.lombok)
+}
+
+dependencies {
+  implementation project(':core-domain:common')
+  implementation project(':core-domain:jooq')
+  implementation project(':core-domain:metrics:metrics-core')
+  implementation libs.bundles.jackson
+  implementation libs.bundles.jooq.latest
+  implementation libs.bundles.log4j
+  implementation libs.core.cfg4j
+  implementation libs.opencsv
+  implementation libs.snakeyaml
+  implementation libs.soul.base.spring
+  implementation libs.soul.config.database
+  implementation libs.soul.mm.crypt
+  implementation libs.soul.mm.datasource
+  implementation libs.soul.mm.spring4
+  implementation libs.spring5.context
+  implementation libs.spring5.jdbc
+  implementation libs.spring5.web
+  implementation libs.swagger.annotations
+
+  testImplementation project(":kz:testing:mock-mysql")
+  testImplementation libs.bundles.testcontainers
+}
+
+ext {
+  mmJooqApp = 'KZ_SOLVA'
+  jooqVersion = libs.versions.jooqLatest.get()
+  gradleJooqPlugin = libs.versions.gradleJooqPlugin.get()
+}
+
+apply from: "${rootDir}/_gradle/jooq.gradle"
+
+jooq {
+  configurations {
+    main {
+      generationTool {
+        generator {
+          database {
+            schemata {
+              schema {
+                inputSchema = 'information_schema'
+                outputSchema = 'information_schema'
+              }
+            }
+            includes = '''
+              tables|
+              columns|
+              '''
+          }
+          target {
+            packageName = 'com.mm.anonymisation.db'
+          }
+        }
+      }
+    }
+  }
+}
