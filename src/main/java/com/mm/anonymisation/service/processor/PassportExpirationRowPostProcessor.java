@@ -1,4 +1,4 @@
-package com.mm.anonymisation.service.processor;
+package java.com.mm.anonymisation.service.processor;
 
 import com.mm.anonymisation.model.Table;
 import java.time.LocalDate;

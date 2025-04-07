@@ -1,4 +1,4 @@
-package com.mm.anonymisation.service;
+package java.com.mm.anonymisation.service;
 
 import com.mm.anonymisation.model.FileType;
 import com.mm.anonymisation.model.Table;

@@ -1,4 +1,4 @@
-package com.mm.anonymisation.service.csv;
+package java.com.mm.anonymisation.service.csv;
 
 import java.io.IOException;
 

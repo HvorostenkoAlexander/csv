@@ -1,4 +1,4 @@
-package com.mm.anonymisation;
+package java.com.mm.anonymisation;
 
 import com.mm.anonymisation.config.KzSolvaAnonymisationConfig;
 import com.mm.base.endpoint.MMApp;

@@ -1,4 +1,4 @@
-package com.mm.anonymisation.service.generator;
+package java.com.mm.anonymisation.service.generator;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.RepeatedTest;

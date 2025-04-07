@@ -1,4 +1,4 @@
-package com.mm.anonymisation.repository;
+package java.com.mm.anonymisation.repository;
 
 import com.mm.testing.mysql.EmbeddedMySQLExtension;
 import java.util.List;

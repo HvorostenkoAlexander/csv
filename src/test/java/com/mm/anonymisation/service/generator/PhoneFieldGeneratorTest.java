@@ -1,4 +1,4 @@
-package com.mm.anonymisation.service.generator;
+package java.com.mm.anonymisation.service.generator;
 
 import java.util.regex.Pattern;
 import org.junit.jupiter.api.Assertions;

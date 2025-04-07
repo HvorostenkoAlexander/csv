@@ -1,4 +1,4 @@
-package com.mm.anonymisation.service.processor;
+package java.com.mm.anonymisation.service.processor;
 
 import com.mm.anonymisation.model.Table;
 import com.mm.anonymisation.service.generator.DefaultIinGenerator;

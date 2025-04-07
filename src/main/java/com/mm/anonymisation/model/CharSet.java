@@ -1,4 +1,4 @@
-package com.mm.anonymisation.model;
+package java.com.mm.anonymisation.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

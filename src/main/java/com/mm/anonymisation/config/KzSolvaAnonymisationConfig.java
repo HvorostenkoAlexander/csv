@@ -1,4 +1,4 @@
-package com.mm.anonymisation.config;
+package java.com.mm.anonymisation.config;
 
 import com.mm.base.config.AppConfigurationConfig;
 import com.mm.base.config.WebMvcConfig;

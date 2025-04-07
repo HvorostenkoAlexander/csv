@@ -1,4 +1,4 @@
-package com.mm.anonymisation.config;
+package java.com.mm.anonymisation.config;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

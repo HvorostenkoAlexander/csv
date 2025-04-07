@@ -1,4 +1,4 @@
-package com.mm.anonymisation.service.generator;
+package java.com.mm.anonymisation.service.generator;
 
 import com.mm.anonymisation.model.CharSet;
 import java.nio.charset.StandardCharsets;

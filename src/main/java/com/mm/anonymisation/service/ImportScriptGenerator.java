@@ -1,4 +1,4 @@
-package com.mm.anonymisation.service;
+package java.com.mm.anonymisation.service;
 
 import com.mm.anonymisation.model.Column;
 import com.mm.anonymisation.model.Field;

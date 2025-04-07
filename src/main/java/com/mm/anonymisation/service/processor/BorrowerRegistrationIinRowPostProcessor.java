@@ -1,4 +1,4 @@
-package com.mm.anonymisation.service.processor;
+package java.com.mm.anonymisation.service.processor;
 
 public class BorrowerRegistrationIinRowPostProcessor extends PassportIinRowPostProcessor {
 

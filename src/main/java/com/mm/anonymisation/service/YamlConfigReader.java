@@ -1,4 +1,4 @@
-package com.mm.anonymisation.service;
+package java.com.mm.anonymisation.service;
 
 import com.mm.anonymisation.model.Column;
 import com.mm.anonymisation.model.Field;
@@ -50,7 +50,7 @@ public class YamlConfigReader implements ConfigReader {
         .orElse(false);
   }
 
-  private List<RowPostProcessor> parseRowProcessors(Map.Entry<String, Map<String, Object>> tableEntry) {
+  private List<RowPostProcessor> parseRowProcessors(Entry<String, Map<String, Object>> tableEntry) {
     @SuppressWarnings("unchecked")
     var processors = (List<String>) tableEntry.getValue().get("processors");
     if (null == processors) {
@@ -69,7 +69,7 @@ public class YamlConfigReader implements ConfigReader {
   }
 
   @SuppressWarnings("unchecked")
-  private List<Field> parseFields(Map.Entry<String, Map<String, Object>> tableEntry) {
+  private List<Field> parseFields(Entry<String, Map<String, Object>> tableEntry) {
     var fields = (List<Map<String, Map<String, Object>>>) tableEntry.getValue().get("fields");
     if (null == fields) {
       return Collections.emptyList();

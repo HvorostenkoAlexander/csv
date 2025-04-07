@@ -1,4 +1,4 @@
-package com.mm.anonymisation.controller;
+package java.com.mm.anonymisation.controller;
 
 import com.mm.anonymisation.model.Table;
 import com.mm.anonymisation.service.CsvProcessor;

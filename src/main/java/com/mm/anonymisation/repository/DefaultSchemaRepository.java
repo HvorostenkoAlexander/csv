@@ -1,4 +1,4 @@
-package com.mm.anonymisation.repository;
+package java.com.mm.anonymisation.repository;
 
 import static com.mm.anonymisation.db.information_schema.Tables.COLUMNS;
 import static com.mm.anonymisation.db.information_schema.Tables.TABLES;
